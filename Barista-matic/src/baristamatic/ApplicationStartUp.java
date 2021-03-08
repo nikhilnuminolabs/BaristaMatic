@@ -2,20 +2,14 @@ package baristamatic;
 
 import java.util.Scanner;
 
-import baristamatic.process.Initializer;
 import baristamatic.process.Process;
-
+import static baristamatic.constant.InventoryConstant.*;
 
 public class ApplicationStartUp {
 
 	public static void main(String[] args) {
 
 		Process process = new Process();
-
-		Initializer initializer = new Initializer();
-
-		// initializing the Process.class object with predefine values
-		initializer.initializeObject(process);
 
 		Scanner scan = new Scanner(System.in);
 
@@ -37,12 +31,12 @@ public class ApplicationStartUp {
 
 				inputString = inputString.trim();
 				
-				if(inputString.equalsIgnoreCase("r"))
+				if(inputString.equalsIgnoreCase(RESTOCK_INPUT))
 				{
 					// restoring the Ingredients inventory stock
 					process.restockInventry();
 				}				
-				else if(inputString.equalsIgnoreCase("q"))
+				else if(inputString.equalsIgnoreCase(APPLICATION_QUIT_INPUT))
 				{
 					break;
 				}	

@@ -47,8 +47,7 @@ public class Drink {
 	
 	public Float calculateCost(Map<Ingredient,Integer> ingredients) {
 		Float totalCost = 0.0F;
-		
-		
+			
 		for (Map.Entry<Ingredient,Integer> ingredient : ingredients.entrySet()) {
 			Ingredient ingredientObj = ingredient.getKey();
 			totalCost += ingredientObj.getCost() * ingredient.getValue();			
