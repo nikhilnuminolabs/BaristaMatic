@@ -13,6 +13,8 @@ import static baristamatic.constant.InventoryConstant.*;
  * Contains functions to do data manipulation operation on  
  * all drinks and Ingredients Inventory
  */
+//CMMNT: This class is reading user inputs, accessing inventory, updating inventory.
+//I feel this class has too much responsibilities.
 public class Process {
 
 	private Map<String,Drink> drinkList;
@@ -56,14 +58,14 @@ public class Process {
 	 * @param drinkNumber Id of Drink 
 	 */
 	public void drinkDispens(String input) {
-
+		//CMMNT: Following try block is for which statement ? if it is for Integer.parseInt then it should have only that 1 line in try block.
 		try {
 			
 			Integer drinkId = Integer.parseInt(input);
 			List<String> drinksNameList = this.drinkNameList ;
 			Map<String,Drink> drinksList = this.drinkList;
 			if(drinkId > 0 && drinkId <= drinksList.size()) {
-
+				//CMMNT: here assumption is done that drink will be available at id-1, can we use HashMap <id,DrinkName> ?, operation will also be fast
 				String drinkName = drinksNameList.get(drinkId-1);
 				Boolean drinkAvailabilityStatus = drinksList.get(drinkName).isAvailabilityStatus();
 
@@ -72,7 +74,7 @@ public class Process {
 					updateInventry(drinkName);
 
 					updateDrinkAvailability();
-
+					//CMMMNT : can we constants for these strings below ?
 					System.out.println("Dispensing: "+drinkName);   
 					
 				}else {
