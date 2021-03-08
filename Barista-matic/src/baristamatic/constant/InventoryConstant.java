@@ -23,11 +23,27 @@ public interface InventoryConstant {
 	public static final String WHIPPED_CREAM = "Whipped Cream";
 	
 	public static final String COFFEE_DRINK = "Coffee";
+	
 	public static final String DECAF_COFFEE_DRINK = "Decaf Coffee";
+	
 	public static final String CAFFE_LATTE_DRINK = "Caffe Latte";
+	
 	public static final String CAFFE_AMERICANO_DRINK = "Caffe Americano";
+	
 	public static final String CAFFEMOCHA_DRINK = "Caffe Mocha";
+	
 	public static final String CAPPUCCINO_DRINK = "Cappuccino";
+	
+	public static final String DISPENSING = "Dispensing: ";
+	
+	public static final String OUT_OF_STOCK = "Out of stock: ";
+	
+	public static final String INVALID_SELECTION = "Invalid Selection: ";
+	
+	public static final String RESTOCK_INPUT = "r";
+	
+	public static final String APPLICATION_QUIT_INPUT = "q";
+
 	
 	
 
