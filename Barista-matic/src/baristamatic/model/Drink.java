@@ -10,7 +10,8 @@ import java.util.TreeMap;
 public class Drink {
 
 	private String name;
-
+	//Comment : This DS is used to update ingredient by iterating on it and to check if the drink is available, also by iterating on it.
+	//If there is no scenario to get value by key, can we make it ArrayList ?, it will make iterations faster ? 
 	private final Map<Ingredient,Integer> ingredients;
 
 	private Float cost;
