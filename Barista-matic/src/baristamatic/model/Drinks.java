@@ -10,7 +10,7 @@ import java.util.TreeMap;
 public class Drinks {
 
 	private Map<String,Drink> drinkList;
-
+	//Comment: Is it required to have this object as class member ? or we can just pass it to  initializeDrink()
 	private Map<String, Ingredient> ingredientsInventory;
 
 	private Map<Integer,String> drinkNameList;
