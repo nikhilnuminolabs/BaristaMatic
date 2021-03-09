@@ -1,12 +1,7 @@
 package baristamatic.process;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import baristamatic.model.Drink;
 import baristamatic.model.Drinks;
-import baristamatic.model.Ingredient;
 import baristamatic.model.IngredientsInventory; 
 import static baristamatic.constant.InventoryConstant.*;
 
@@ -24,6 +19,7 @@ public class Process {
 		ingredientsInventory = new IngredientsInventory();
 		drinks = new Drinks(ingredientsInventory.getIngredients());
 	}
+	
 	/**
 	 * Dispensed the Drink with updating the Ingredients Inventory and Drink availability status
 	 * @param drinkNumber Id of Drink 
@@ -32,50 +28,28 @@ public class Process {
 
 		try {			
 			Integer drinkId = Integer.parseInt(input);
-	
 
-		if(drinks.isVaidDrinkId(drinkId)) {
-			
-			Drink drinkObj = drinks.getDrinkById(drinkId);
+			if(drinks.isVaidDrinkId(drinkId)) {
 
-			if(drinkObj.isAvailabilityStatus()) { 
+				Drink drinkObj = drinks.getDrinkById(drinkId);
 
-				ingredientsInventory.updateIngredientsInventory(drinkObj.getIngredients());
+				if(ingredientsInventory.getDrinkIngredientsAvailability(drinkObj.getIngredients())) { 
 
-				updateDrinkAvailability();
+					ingredientsInventory.updateIngredientsInventory(drinkObj.getIngredients());
 
-				System.out.println(DISPENSING+drinkObj.getName());   
+					System.out.println(DISPENSING+drinkObj.getName());   
 
-			}else {
-				System.out.println(OUT_OF_STOCK+drinkObj.getName());
+				}else {
+					System.out.println(OUT_OF_STOCK+drinkObj.getName());
+				}
+			} else {
+				invalidInputMessage(input);
 			}
-		} else {
-			invalidDataMessage(input);
-		}
-		
+
 		}
 		catch(NumberFormatException ex) {
-			invalidDataMessage(input);
+			invalidInputMessage(input);
 		}
-	}
-
-	/**
-	 * Update the availability status of all drinks after drink dispensed
-	 */
-	public void updateDrinkAvailability() {
-
-		for (Map.Entry<Integer,String> drink : drinks.getAllDrinkNameList().entrySet()) {
-
-			Drink drinkObj = drinks.getDrinkById(drink.getKey());
-			for (Map.Entry<Ingredient,Integer> drinkIngredient : drinkObj.getIngredients().entrySet()) {				
-
-				if(ingredientsInventory.getIngredientStock (drinkIngredient.getKey()) < drinkIngredient.getValue() ) {
-					drinkObj.setAvailabilityStatus(false);
-				} else	{
-					drinkObj.setAvailabilityStatus(true);
-				}			
-			}
-		} 
 	}
 
 	/**
@@ -95,7 +69,7 @@ public class Process {
 		ingredientsInventory.displayInventry();
 
 		System.out.println("Menu:");
-		drinks.displayDrinkList();
+		displayDrinkList();
 
 	}
 
@@ -103,9 +77,17 @@ public class Process {
 	 * display error message for invalid data
 	 * @param input input from system
 	 */
-	public void invalidDataMessage(String input) {
+	public void invalidInputMessage(String input) {
 
 		System.out.println(INVALID_SELECTION+input);
+	}
+	
+	public void displayDrinkList() {
+
+		for (Map.Entry<Integer,String> drinkName : drinks.getAllDrinkNameList().entrySet()) {
+			Drink drinkObject = drinks.getDrinkById(drinkName.getKey());
+			System.out.println(drinkName.getKey()+","+drinkObject.getName()+","+PRICE_UNIT+drinkObject.getCost()+","+ingredientsInventory.getDrinkIngredientsAvailability(drinkObject.getIngredients()));
+		}	
 	}
 
 }

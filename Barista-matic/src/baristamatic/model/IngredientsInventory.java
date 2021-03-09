@@ -64,8 +64,7 @@ public class IngredientsInventory {
 				ingredientsStock.put(ingredient.getKey(),(ingredientsStock.get(ingredient.getKey()) - ingredient.getValue()));
 			}
 		}
-		
-		
+			
 	}
 	
 	public Integer getIngredientStock(Ingredient Ingredient) {
@@ -79,6 +78,18 @@ public class IngredientsInventory {
 			System.out.println(inventryIngredient.getKey().getName()+","+inventryIngredient.getValue());
 		}
 
+	}
+	
+	public Boolean getDrinkIngredientsAvailability(Map<Ingredient,Integer> drinkIngredients) {
+		
+		for (Map.Entry<Ingredient,Integer> drinkIngredient : drinkIngredients.entrySet()) {				
+
+			if(getIngredientStock (drinkIngredient.getKey()) < drinkIngredient.getValue() ) {
+				return false;
+			} 			
+		}
+		
+		return true;
 	}
 
 	@Override

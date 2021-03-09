@@ -43,6 +43,8 @@ public interface InventoryConstant {
 	public static final String RESTOCK_INPUT = "r";
 	
 	public static final String APPLICATION_QUIT_INPUT = "q";
+	
+	public static final String PRICE_UNIT = "$";
 
 	
 	

@@ -46,7 +46,7 @@ public class ApplicationStartUp {
 					process.drinkDispens(inputString);
 				}			
 				else {
-					process.invalidDataMessage(inputString);
+					process.invalidInputMessage(inputString);
 				}
 			}
 

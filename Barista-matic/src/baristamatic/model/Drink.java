@@ -15,16 +15,13 @@ public class Drink {
 
 	private Float cost;
 
-	private Boolean availabilityStatus;
-
 	public Drink() {
 		ingredients = new TreeMap<Ingredient,Integer>();
 	}
 
-	public Drink(String name, Map<Ingredient,Integer> ingredients, Boolean availabilityStatus) {
+	public Drink(String name, Map<Ingredient,Integer> ingredients) {
 		this.name = name;
 		this.ingredients = ingredients;
-		this.availabilityStatus = availabilityStatus;
 		this.cost = calculateCost(ingredients);
 		
 	}
@@ -55,24 +52,13 @@ public class Drink {
 		return totalCost;
 	}
 	
-	
-
-	public Boolean isAvailabilityStatus() {
-		return availabilityStatus;
-	}
-
-	public void setAvailabilityStatus(Boolean availabilityStatus) {
-		this.availabilityStatus = availabilityStatus;
-	}
-
 	public Map<Ingredient,Integer> getIngredients() {
 		return ingredients;
 	}
 
 	@Override
 	public String toString() {
-		return "Drink [name=" + name + ", ingredients=" + ingredients + ", cost=" + cost + ", availabilityStatus="
-				+ availabilityStatus + "]";
+		return "Drink [name=" + name + ", ingredients=" + ingredients + ", cost=" + cost + "]";
 	}
 
 }
