@@ -10,7 +10,7 @@ import java.util.TreeMap;
  *
  */
 public class IngredientsInventory {
-
+	// Is it possible to club both the following DS into 1 ?
 	private Map<String,Ingredient> Ingredients;
 
 	private Map<Ingredient,Integer> ingredientsStock;
@@ -66,7 +66,7 @@ public class IngredientsInventory {
 		}
 			
 	}
-	
+	//Comment: if this function is not called from outside, we should make it private
 	public Integer getIngredientStock(Ingredient Ingredient) {
 		
 		return ingredientsStock.get(Ingredient);
