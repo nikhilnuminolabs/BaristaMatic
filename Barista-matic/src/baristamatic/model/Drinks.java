@@ -10,8 +10,6 @@ import java.util.TreeMap;
 public class Drinks {
 
 	private Map<String,Drink> drinkList;
-	//Comment: Is it required to have this object as class member ? or we can just pass it to  initializeDrink()
-	private Map<String, Ingredient> ingredientsInventory;
 
 	private Map<Integer,String> drinkNameList;
 
@@ -19,22 +17,20 @@ public class Drinks {
 
 		this.drinkList = new TreeMap<String,Drink>();
 
-		this.ingredientsInventory = ingredientsInventory;
-
 		this.drinkNameList = new HashMap<Integer,String>();
 
-		init();
+		init(ingredientsInventory);
 	}
 
-	public void init() {
+	private void init(Map<String, Ingredient> ingredientsInventory) {
 
-		initializeDrink();
+		initializeDrink(ingredientsInventory);
 
 		initializeDrinkNameList();
 
 	}
 
-	public void initializeDrink() {
+	private void initializeDrink(Map<String, Ingredient> ingredientsInventory) {
 
 		Map<Ingredient,Integer> CoffeeIngredients = new TreeMap<Ingredient,Integer>();
 		CoffeeIngredients.put(ingredientsInventory.get(COFFEE),3);
@@ -73,7 +69,7 @@ public class Drinks {
 
 	}
 
-	public void initializeDrinkNameList() {
+	private void initializeDrinkNameList() {
 
 		Integer drinkIndex = 0;		
 		for (Map.Entry<String,Drink> drink : drinkList.entrySet()) {
@@ -98,9 +94,5 @@ public class Drinks {
 		return drinkList.containsKey(drinkNameList.get(drinkId)) ;
 	}
 		
-	public Boolean setDrinkAvailabilityStatus(Integer drinkId,Boolean drinkAvailabilityStatus) {
 
-		return drinkList.containsKey(drinkNameList.get(drinkId)) ;
-	}
-	
 }

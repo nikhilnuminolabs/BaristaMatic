@@ -79,7 +79,7 @@ public class Process {
 	 */
 	public void invalidInputMessage(String input) {
 
-		System.out.println(INVALID_SELECTION+input);
+		System.out.println(INVALID_SELECTION+input);  
 	}
 	
 	public void displayDrinkList() {

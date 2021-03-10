@@ -10,7 +10,7 @@ import java.util.TreeMap;
  *
  */
 public class IngredientsInventory {
-	// Is it possible to club both the following DS into 1 ?
+
 	private Map<String,Ingredient> Ingredients;
 
 	private Map<Ingredient,Integer> ingredientsStock;
@@ -21,11 +21,7 @@ public class IngredientsInventory {
 		init();
 	}
 
-	public Map<String, Ingredient> getIngredients() {
-		return Ingredients;
-	}
-
-	public void init() {
+	private void init() {
 
 		Ingredients.put(COFFEE, new Ingredient(COFFEE,0.75f));
 		Ingredients.put(DECAF_COFFEE, new Ingredient(DECAF_COFFEE,0.75f));
@@ -41,7 +37,6 @@ public class IngredientsInventory {
 
 	}
 
-
 	public void restockIngredientsInventory() {
 
 		ingredientsStock.put(Ingredients.get(COFFEE), MAXSTOCK);		
@@ -56,6 +51,10 @@ public class IngredientsInventory {
 
 	}
 
+	public Map<String, Ingredient> getIngredients() {
+		return Ingredients;
+	}
+
 	public void updateIngredientsInventory(Map<Ingredient,Integer> drinkIngredients ) {
 
 		for (Map.Entry<Ingredient,Integer> ingredient : drinkIngredients.entrySet()) {
@@ -64,14 +63,13 @@ public class IngredientsInventory {
 				ingredientsStock.put(ingredient.getKey(),(ingredientsStock.get(ingredient.getKey()) - ingredient.getValue()));
 			}
 		}
-			
 	}
-	//Comment: if this function is not called from outside, we should make it private
+
 	public Integer getIngredientStock(Ingredient Ingredient) {
-		
+
 		return ingredientsStock.get(Ingredient);
 	}
-	
+
 	public void displayInventry() {
 
 		for (Map.Entry<Ingredient, Integer> inventryIngredient : ingredientsStock.entrySet()) {
@@ -79,16 +77,16 @@ public class IngredientsInventory {
 		}
 
 	}
-	
+
 	public Boolean getDrinkIngredientsAvailability(Map<Ingredient,Integer> drinkIngredients) {
-		
+
 		for (Map.Entry<Ingredient,Integer> drinkIngredient : drinkIngredients.entrySet()) {				
 
 			if(getIngredientStock (drinkIngredient.getKey()) < drinkIngredient.getValue() ) {
 				return false;
 			} 			
 		}
-		
+
 		return true;
 	}
 
