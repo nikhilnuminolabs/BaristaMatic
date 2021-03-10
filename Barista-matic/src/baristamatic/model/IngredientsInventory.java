@@ -33,12 +33,12 @@ public class IngredientsInventory {
 		Ingredients.put(COCOA,  new Ingredient(COCOA,0.90f));
 		Ingredients.put(WHIPPED_CREAM,  new Ingredient(WHIPPED_CREAM,1.00f));
 
-		restockIngredientsInventory();
+		initializeIngredientsInventory();
 
 	}
-
-	public void restockIngredientsInventory() {
-
+	
+	private void initializeIngredientsInventory() {
+		
 		ingredientsStock.put(Ingredients.get(COFFEE), MAXSTOCK);		
 		ingredientsStock.put(Ingredients.get(DECAF_COFFEE), MAXSTOCK);	
 		ingredientsStock.put(Ingredients.get(SUGAR), MAXSTOCK);		
@@ -48,7 +48,12 @@ public class IngredientsInventory {
 		ingredientsStock.put(Ingredients.get(ESPRESSO), MAXSTOCK);	
 		ingredientsStock.put(Ingredients.get(COCOA), MAXSTOCK);
 		ingredientsStock.put(Ingredients.get(WHIPPED_CREAM), MAXSTOCK);
+		
+	}
 
+	public void restockIngredientsInventory() {
+
+		initializeIngredientsInventory();
 	}
 
 	public Map<String, Ingredient> getIngredients() {
