@@ -78,21 +78,21 @@ public class Drinks {
 		} 
 
 	}
-	
+
 	public Map<Integer,String> getAllDrinkNameList() {
 
 		return drinkNameList ;
 	}
 
 	public Drink getDrinkById(Integer drinkId) {
-
+		
 		return drinkList.get(drinkNameList.get(drinkId)) ;
 	}
-	
-	public Boolean isVaidDrinkId(Integer drinkId) {
 
-		return drinkList.containsKey(drinkNameList.get(drinkId)) ;
-	}
+	public Boolean isVaidDrinkId(Integer drinkId) {
 		
+		return drinkNameList.containsKey(drinkId) ;
+
+	}
 
 }
